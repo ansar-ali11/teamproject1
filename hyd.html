@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hyderabad - Travel Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        @font-face {
+            font-family: "Dongle-light";
+            src: url("Dongle/Dongle-Light.ttf");
+        }
+
+        @font-face {
+            font-family: "Dongle-regular";
+            src: url("Dongle/Dongle-Regular.ttf");
+        }
+
+        @font-face {
+            font-family: "Dongle-bold";
+            src: url("Dongle/Dongle-Bold.ttf");
+        }
+
+        header {
+            display: flex;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            align-items: center;
+            max-width: 100%;
+        }
+
+        .logo img {
+            max-width: 15%;
+        }
+
+        .nav-menu ul {
+            display: flex;
+        }
+
+        .nav-menu li {
+            list-style: none;
+            margin-right: 20px;
+        }
+
+        .nav-menu li:last-child {
+            margin-right: 0;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            font-family: "Dongle-bold";
+            font-size: 1.6rem;
+            color: #333;
+            transition: all ease 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #ff7f50;
+        }
+
+        .hero {
+            position: relative;
+            height: 600px;
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            right: 60%;
+            left: 10px;
+            transform: translateY(-50%);
+            text-align: left;
+            color: #fff;
+            opacity: 0;
+            animation: fadeIn 3s forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content h1 {
+            font-family: "Dongle-bold";
+            font-size: 4rem;
+            color: #fff;
+        }
+
+        .hero-content p {
+            font-family: "Dongle-regular";
+            font-size: 1.8rem;
+            margin-top: -20px;
+            margin-bottom: 10px;
+        }
+
+        .about {
+            text-align: center;
+            padding: 80px 40px;
+            background-color: #f9f9f9;
+        }
+
+        .about h3 {
+            font-family: "Dongle-bold";
+            font-size: 3rem;
+        }
+
+        .about p {
+            font-family: "Dongle-regular";
+            font-size: 1.4rem;
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+
+        .destinations {
+            font-size: 2.4rem;
+            font-family: "Dongle-bold";
+            margin: 40px 80px;
+            text-align: center;
+        }
+
+        .destinations h2 {
+            margin-bottom: 40px;
+        }
+
+        .destination-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 40px;
+        }
+
+        .destination-item {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .destination-item:hover {
+            transform: scale(1.05);
+        }
+
+        .destination-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .destination-item h3 {
+            padding: 1rem;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .destination-item p {
+            padding: 0 1rem 1rem;
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .contact {
+            padding: 80px;
+            text-align: center;
+            background-color: #F7F7F7;
+        }
+
+        .contact h3 {
+            font-family: "Dongle-bold";
+            font-size: 3rem;
+        }
+
+        .contact-info p {
+            font-family: "Dongle-regular";
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-info ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .contact-info li {
+            margin: 0 20px;
+            font-family: "Dongle-regular";
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info li a {
+            text-decoration: none;
+            font-family: "Dongle-regular";
+            color: black;
+        }
+
+        .contact-info i {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            align-items: center;
+        }
+
+        .social-icons a {
+            color: #fff;
+            font-size: 24px;
+            margin-right: 20px;
+        }
+
+        footer p {
+            font-family: "Dongle-regular";
+            font-size: 1.4rem;
+        }
+
+        @media (max-width: 1177px) {
+            .hero-content h1 {
+                line-height: 0.7;
+            }
+
+            .hero-content p {
+                margin-top: 0;
+                line-height: 0.8;
+            }
+
+            .destination-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                margin-bottom: 5px;
+            }
+        }
+
+        @media (max-width: 603px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 430px) {
+            header {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 1.3rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .destinations {
+                font-size: 1.5rem;
+            }
+
+            .destination-grid {
+                grid-template-columns: repeat(1, 1fr);
+            }
+
+            .about {
+                padding: 0 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="#"><img src="images/logo.jpg" alt="logo" /></a>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="details.html">Info</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#hotels">Hotels</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="hero-image">
+                <img src="images/hyd.jpg" alt="Hyderabad" />
+            </div>
+            <div class="hero-content">
+                <h1>Welcome to Hyderabad</h1>
+                <p>Experience the blend of history and modernity in the City of Pearls.</p>
+            </div>
+        </section>
+        <section id="about" class="about">
+            <h3>About Hyderabad</h3>
+            <p>
+                Hyderabad, the capital of Telangana, is known for its rich history, stunning architecture, and delicious cuisine. 
+                With its historic landmarks like the Charminar and Golconda Fort, the city boasts a unique blend of old and new. 
+                The vibrant culture is reflected in its festivals, music, and dance. 
+                Hyderabad is also a hub for information technology and business, often referred to as "Cyberabad."
+                Enjoy the warmth of its people, the aroma of its spices, and the beauty of its gardens, including the famous Lumbini Park and Necklace Road.
+            </p>
+        </section>
+        <section id="destinations" class="destinations">
+            <h2>Must-Visit Places in Hyderabad</h2>
+            <div class="destination-grid">
+                <div class="destination-item">
+                    <img src="images/destination-2.jpg" alt="Charminar" />
+                    <h3>Charminar</h3>
+                    <p>
+                        This 16th-century mosque is an iconic symbol of Hyderabad. Explore its stunning architecture and vibrant markets,
+                        where you can shop for traditional bangles and pearls.
+                    </p>
+                </div>
+                <div class="destination-item">
+                    <img src="https://media.gettyimages.com/id/169636120/photo/golconda-fort.jpg?s=612x612&w=0&k=20&c=osHEO3Js4zPZsXPn0o3xUD-RwN8D_tVcid5TMU8qRkc=" alt="Golkonda Fort" />
+                    <h3>Golkonda Fort</h3>
+                    <p>
+                        A historical fortress with fascinating acoustics and panoramic views. Don't miss the light and sound show 
+                        that tells the story of this majestic fort and its rulers.
+                    </p>
+                </div>
+                <div class="destination-item">
+                    <img src="https://media.gettyimages.com/id/96651606/photo/tourists-gather-around-the-buddha-statue-situated-in-the-middle-of-the-hussain-sagar-lake-in.jpg?s=612x612&w=0&k=20&c=4ikP-C0looUCnMvJSUpDwNLUjhvTLPXeCfp37N2gqt0=" alt="Hussain Sagar Lake" />
+                    <h3>Hussain Sagar Lake</h3>
+                    <p>
+                        A beautiful artificial lake featuring a massive Buddha statue at its center. Enjoy boating, and explore 
+                        the scenic surroundings, especially at sunset.
+                    </p>
+                </div>
+                <div class="destination-item">
+                    <img src="https://media.gettyimages.com/id/1133624508/photo/india-hyderabad-ramoji-film-city-is-the-largest-integrated-film-city-and-also-a-popular.jpg?s=612x612&w=0&k=20&c=s-aj4G4PI5Wi1_XJNXFXRm4HAprApPu7WviTld2gWB0=" alt="Ramoji Film City" />
+                    <h3>Ramoji Film City</h3>
+                    <p>
+                        Ramoji Film City is a sprawling film complex that offers a glimpse into the world of cinema. 
+                        With stunning sets, themed attractions, and behind-the-scenes tours, it’s a must-visit for movie enthusiasts. 
+                        Experience live shows, enjoy amusement rides, and explore the beautiful gardens spread across this vibrant destination.
+                    </p>
+                </div>
+                <div class="destination-item">
+                    <img src="https://thumbs.dreamstime.com/b/indigo-airbus-connected-to-aerobridge-rajiv-gandhi-international-airport-hyderabad-india-36427799.jpg?w=768" alt="Rajiv Gandhi International Airport" />
+                    <h3>Rajiv Gandhi International Airport</h3>
+                    <p>
+                        One of the busiest airports in India, offering modern facilities and a gateway to the city. 
+                        Known for its efficiency and hospitality, it connects Hyderabad to the world.
+                    </p>
+                </div>
+                <div class="destination-item">
+                    <img src="https://www.hyderabadtourism.travel/images/visiting-places/headers/shilparamam-hyderabad-tourism-entry-fee-timings-holidays-reviews-header.jpg" alt="Shilparamam" />
+                    <h3>Shilparamam</h3>
+                    <p>
+                        A crafts village that showcases the traditional arts and crafts of India through exhibitions and workshops. 
+                        It's a perfect place to pick up souvenirs and learn about the local culture.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section id="contact" class="contact">
+            <h3>Contact Us</h3>
+            <p>If you have any questions or need assistance, feel free to reach out!</p>
+            <div class="contact-info">
+                <ul>
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>Rajhamundry, GGU University
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i><a href="mailto:info@travelworld.com">info@travelworld.com</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone-alt"></i><a href="tel:555-123-4567">555-123-4567</a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <footer>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p>&copy; 2024 Travel World. All Rights Reserved.</p>
+        </footer>
+    </main>
+</body>
+
+</html>

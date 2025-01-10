@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel World</title>
+    <link rel="stylesheet" href="search.css">
+</head>
+<body>
+    <main class="content">
+        <h1>Search <br>your <span>place</span><br>to visit</h1>
+        <div class="search-container">
+            <input type="text" placeholder="Search for a city..." class="search-bar" id="cityInput">
+            <button class="search-button" onclick="searchCity()">Search</button>
+        </div>
+        <div class="cities-container">
+            <div class="city-box">bangalore</div>
+            <div class="city-box">hyderabad</div>
+            <div class="city-box">chennai</div>
+            <div class="city-box">delhi</div>
+            <div class="city-box">vizag</div>
+        </div>
+        <p> "Experience the magic of India! Our site offers insights into enchanting destinations, <br>cultural
+            hotspots, and local delights. Let us help you discover the incredible beauty that awaits <br> in every
+            corner of this remarkable country."</p>
+            </main>
+    <script>
+        function searchCity() {
+            const city = document.getElementById('cityInput').value.toLowerCase();
+            let url;
+            switch (city) {
+                case 'hyderabad':
+                    url = 'hyd.html';
+                    break;
+                case 'bangalore':
+                    url = 'bang.html';
+                    break;
+                case 'chennai':
+                    url = 'chennai.html';
+                    break;
+                case 'delhi':
+                    url = 'delhi.html';
+                    break;
+                default:
+                    alert('City not found!');
+                    return;
+            }
+            window.location.href = url;
+        }
+    </script>
+</body>
+</html>

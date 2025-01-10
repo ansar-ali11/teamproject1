@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hyderabad - Travel Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        @font-face {
+            font-family: "Dongle-light";
+            src: url("Dongle/Dongle-Light.ttf");
+        }
+
+        @font-face {
+            font-family: "Dongle-regular";
+            src: url("Dongle/Dongle-Regular.ttf");
+        }
+
+        @font-face {
+            font-family: "Dongle-bold";
+            src: url("Dongle/Dongle-Bold.ttf");
+        }
+
+        header {
+            display: flex;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            align-items: center;
+            max-width: 100%;
+        }
+
+        .logo img {
+            max-width: 15%;
+        }
+
+        .nav-menu ul {
+            display: flex;
+        }
+
+        .nav-menu li {
+            list-style: none;
+            margin-right: 20px;
+        }
+
+        .nav-menu li:last-child {
+            margin-right: 0;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            font-family: "Dongle-bold";
+            font-size: 1.6rem;
+            color: #333;
+            transition: all ease 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #ff7f50;
+        }
+
+        .hero {
+            position: relative;
+            height: 600px;
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            right: 60%;
+            left: 10px;
+            transform: translateY(-50%);
+            text-align: left;
+            color: #fff;
+            opacity: 0;
+            animation: fadeIn 3s forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content h1 {
+            font-family: "Dongle-bold";
+            font-size: 4rem;
+            color: #fff;
+        }
+
+        .hero-content p {
+            font-family: "Dongle-regular";
+            font-size: 1.8rem;
+            margin-top: -20px;
+            margin-bottom: 10px;
+        }
+
+        .about {
+            text-align: center;
+            padding: 80px 40px;
+            background-color: #f9f9f9;
+        }
+
+        .about h3 {
+            font-family: "Dongle-bold";
+            font-size: 3rem;
+        }
+
+        .about p {
+            font-family: "Dongle-regular";
+            font-size: 1.4rem;
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+
+        .destinations {
+            font-size: 2.4rem;
+            font-family: "Dongle-bold";
+            margin: 40px 80px;
+            text-align: center;
+        }
+
+        .destinations h2 {
+            margin-bottom: 40px;
+        }
+
+        .destination-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 40px;
+        }
+
+        .destination-item {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .destination-item:hover {
+            transform: scale(1.05);
+        }
+
+        .destination-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .destination-item h3 {
+            padding: 1rem;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .destination-item p {
+            padding: 0 1rem 1rem;
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .contact {
+            padding: 80px;
+            text-align: center;
+            background-color: #F7F7F7;
+        }
+
+        .contact h3 {
+            font-family: "Dongle-bold";
+            font-size: 3rem;
+        }
+
+        .contact-info p {
+            font-family: "Dongle-regular";
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-info ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .contact-info li {
+            margin: 0 20px;
+            font-family: "Dongle-regular";
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info li a {
+            text-decoration: none;
+            font-family: "Dongle-regular";
+            color: black;
+        }
+
+        .contact-info i {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            align-items: center;
+        }
+
+        .social-icons a {
+            color: #fff;
+            font-size: 24px;
+            margin-right: 20px;
+        }
+
+        footer p {
+            font-family: "Dongle-regular";
+            font-size: 1.4rem;
+        }
+
+        @media (max-width: 1177px) {
+            .hero-content h1 {
+                line-height: 0.7;
+            }
+
+            .hero-content p {
+                margin-top: 0;
+                line-height: 0.8;
+            }
+
+            .destination-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                margin-bottom: 5px;
+            }
+        }
+
+        @media (max-width: 603px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 430px) {
+            header {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 1.3rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .destinations {
+                font-size: 1.5rem;
+            }
+
+            .destination-grid {
+                grid-template-columns: repeat(1, 1fr);
+            }
+
+            .about {
+                padding: 0 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="#"><img src="images/logo.jpg" alt="logo" /></a>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="details.html">Info</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#hotels">Hotels</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="hero-image">
+                <img src="https://media.istockphoto.com/id/474676074/photo/bangalore-city-scape.webp?a=1&b=1&s=612x612&w=0&k=20&c=cTRlDtE0ecuPALz9_lXAj_YZf4a-bgqn7C46rPTC578=" alt="bangalore" />
+            </div>
+            <div class="hero-content">
+                <h1>Welcome to Bangalore</h1>
+                <p>Experience the blend of history and modernity in the City of Pearls.</p>
+            </div>
+        </section>
+        <section id="about" class="about">
+            <h3>About Bangalore</h3>
+            <p>
+                Bangalore, the capital of Karnataka, is renowned for its pleasant climate, lush gardens, and booming tech industry. 
+                The city, known as the "Silicon Valley of India," seamlessly blends modernity with tradition. 
+                With historic landmarks like the Bangalore Palace and Tipu Sultan's Summer Palace, Bangalore boasts a rich cultural heritage. 
+                The vibrant city life is reflected in its diverse festivals, music, and art scenes. 
+                Bangalore is a hub for startups and innovation, attracting tech enthusiasts from all over the world.
+                Enjoy the greenery of its parks, the aroma of its coffee, and the beauty of its lakes, including the famous Lalbagh Botanical Garden and Cubbon Park.
+            </p>
+        </section>
+        <section id="destinations" class="destinations">
+            <h2>Must-Visit Places in Bangalore</h2>
+            <div class="destination-grid">
+                <div class="destination-item">
+                    <img src="https://media.istockphoto.com/id/1382865466/photo/bangalore-or-bengaluru.webp?a=1&b=1&s=612x612&w=0&k=20&c=91B0Ch9awxp3Q8TMCvOsoUh4K6SSmVIzn7eDWe2WHiM=" alt="Lalbagh Botanical Garden" />
+                    <h3>Lalbagh Botanical Garden</h3>
+                    <p>
+                        A stunning garden featuring a glasshouse and numerous species of flora. It's a perfect place for a leisurely walk amidst nature.
+                    </p>
+                </div>
+                <div class="destination-item">
+                    <img src="https://media.istockphoto.com/id/1194408153/photo/bangalore-palace-bengaluru-karnataka-india.webp?a=1&b=1&s=612x612&w=0&k=20&c=BvYIvWwUSh-FZP8MoTRhva6BqyY5d_b5oCNaMpYX24w=" alt="Bangalore Palace" />
+                    <h3>Bangalore Palace</h3>
+                    <p>
+                        An architectural wonder inspired by England’s Windsor Castle. Explore the lavish interiors and royal charm of this majestic palace.
+                    </p>
+                </div>
+                <div class="destination-item">
+                    <img src="https://media.istockphoto.com/id/2151383304/photo/a-regal-silhouette-against-the-bangalore-sky-where-history%C3%A2s-echo-meets-modern-india%C3%A2s.webp?a=1&b=1&s=612x612&w=0&k=20&c=u0pbOtwFsoZxL_e17Eka4LeoR3Mk1RaiE-zaPuEw4b0=" alt="Vidhana Soudha" />
+                    <h3>Vidhana Soudha</h3>
+                    <p>
+                        The seat of the Karnataka legislature, known for its grand architecture. A must-visit for history and architecture enthusiasts.
+                    </p>
+                </div>
+                <div class="destination-item">
+                    <img src="https://images.unsplash.com/photo-1687158266872-fd2773fa76c6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8YmFuZ2Fsb3JlJTIwY2l0eXxlbnwwfHwwfHx8MA%3D%3D" alt="" />
+                    <h3>Commercial Street</h3>
+                    <p>
+                        A bustling shopping area with local shops and street food. Perfect for a day of retail therapy and culinary delights.
+                    </p>
+                </div>
+                <div class="destination-item">
+                    <img src="https://images.unsplash.com/photo-1702218182980-adec21dc6956?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8VGlwdSUyMFN1bHRhbidzJTIwU3VtbWVyJTIwUGFsYWNlfGVufDB8fDB8fHww" alt="Tipu Sultan's Summer Palace" />
+                    <h3>Tipu Sultan's Summer Palace</h3>
+                    <p>
+                        A historical monument showcasing Indo-Islamic architecture. Step into the past and admire the intricate designs and rich history.
+                    </p>
+                </div>
+                <div class="destination-item">
+                    <img src="https://media.istockphoto.com/id/139745659/photo/cubbon-park-bangalore.webp?a=1&b=1&s=612x612&w=0&k=20&c=jNgI_SrQKO0BrFTEhYkZU-pUgZ60TT9KdJlrtFgsLto=" alt="Cubbon Park" />
+                    <h3>Cubbon Park</h3>
+                    <p>
+                        A large park in the city center, perfect for a relaxing day out. Enjoy the greenery, walking trails, and peaceful atmosphere.
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact" class="contact">
+            <h3>Contact Us</h3>
+            <p>If you have any questions or need assistance, feel free to reach out!</p>
+            <div class="contact-info">
+                <ul>
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>Rajhamundry, GGU University
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i><a href="mailto:info@travelworld.com">info@travelworld.com</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone-alt"></i><a href="tel:555-123-4567">555-123-4567</a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <footer>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p>&copy; 2024 Travel World. All Rights Reserved.</p>
+        </footer>
+    </main>
+</body>
+
+</html>

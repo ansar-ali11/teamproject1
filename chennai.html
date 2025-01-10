@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chennai - Travel Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        @font-face {
+            font-family: "Dongle-light";
+            src: url("Dongle/Dongle-Light.ttf");
+        }
+
+        @font-face {
+            font-family: "Dongle-regular";
+            src: url("Dongle/Dongle-Regular.ttf");
+        }
+
+        @font-face {
+            font-family: "Dongle-bold";
+            src: url("Dongle/Dongle-Bold.ttf");
+        }
+
+        header {
+            display: flex;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            align-items: center;
+            max-width: 100%;
+        }
+
+        .logo img {
+            max-width: 15%;
+        }
+
+        .nav-menu ul {
+            display: flex;
+        }
+
+        .nav-menu li {
+            list-style: none;
+            margin-right: 20px;
+        }
+
+        .nav-menu li:last-child {
+            margin-right: 0;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            font-family: "Dongle-bold";
+            font-size: 1.6rem;
+            color: #333;
+            transition: all ease 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #ff7f50;
+        }
+
+        .hero {
+            position: relative;
+            height: 600px;
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            right: 60%;
+            left: 10px;
+            transform: translateY(-50%);
+            text-align: left;
+            color: #fff;
+            opacity: 0;
+            animation: fadeIn 3s forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content h1 {
+            font-family: "Dongle-bold";
+            font-size: 4rem;
+            color: #fff;
+        }
+
+        .hero-content p {
+            font-family: "Dongle-regular";
+            font-size: 1.8rem;
+            margin-top: -20px;
+            margin-bottom: 10px;
+        }
+
+        .about {
+            text-align: center;
+            padding: 80px 40px;
+            background-color: #f9f9f9;
+        }
+
+        .about h3 {
+            font-family: "Dongle-bold";
+            font-size: 3rem;
+        }
+
+        .about p {
+            font-family: "Dongle-regular";
+            font-size: 1.4rem;
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+
+        .destinations {
+            font-size: 2.4rem;
+            font-family: "Dongle-bold";
+            margin: 40px 80px;
+            text-align: center;
+        }
+
+        .destinations h2 {
+            margin-bottom: 40px;
+        }
+
+        .destination-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 40px;
+        }
+
+        .destination-item {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .destination-item:hover {
+            transform: scale(1.05);
+        }
+
+        .destination-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .destination-item h3 {
+            padding: 1rem;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .destination-item p {
+            padding: 0 1rem 1rem;
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .contact {
+            padding: 80px;
+            text-align: center;
+            background-color: #F7F7F7;
+        }
+
+        .contact h3 {
+            font-family: "Dongle-bold";
+            font-size: 3rem;
+        }
+
+        .contact-info p {
+            font-family: "Dongle-regular";
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-info ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .contact-info li {
+            margin: 0 20px;
+            font-family: "Dongle-regular";
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info li a {
+            text-decoration: none;
+            font-family: "Dongle-regular";
+            color: black;
+        }
+
+        .contact-info i {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            align-items: center;
+        }
+
+        .social-icons a {
+            color: #fff;
+            font-size: 24px;
+            margin-right: 20px;
+        }
+
+        footer p {
+            font-family: "Dongle-regular";
+            font-size: 1.4rem;
+        }
+
+        @media (max-width: 1177px) {
+            .hero-content h1 {
+                line-height: 0.7;
+            }
+
+            .hero-content p {
+                margin-top: 0;
+                line-height: 0.8;
+            }
+
+            .destination-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                margin-bottom: 5px;
+            }
+        }
+
+        @media (max-width: 603px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 430px) {
+            header {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 1.3rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .destinations {
+                font-size: 1.5rem;
+            }
+
+            .destination-grid {
+                grid-template-columns: repeat(1, 1fr);
+            }
+
+            .about {
+                padding: 0 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="#"><img src="images/logo.jpg" alt="logo" /></a>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="details.html">Info</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#hotels">Hotels</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="hero-image">
+                <img src="https://media.istockphoto.com/id/500731532/photo/city-of-chennai-aerial-view.webp?a=1&b=1&s=612x612&w=0&k=20&c=M-snkxmLmsDwKfhyCOlpDoifXkAgLIrBdVFGXFzbt_g="
+                    alt="Chennai" />
+            </div>
+            <div class="hero-content">
+                <h1>Welcome to Chennai</h1>
+                <p>Discover the vibrant culture and rich history of the Gateway to South India.</p>
+            </div>
+        </section>
+        <section id="about" class="about">
+            <h3>About Chennai</h3>
+            <p>
+                Chennai, the capital of Tamil Nadu, is known for its deep-rooted traditions, stunning temples, and
+                delicious cuisine.
+                This bustling metropolis blends ancient and modern seamlessly, with landmarks like the historic Fort St.
+                George and the vibrant Marina Beach.
+                Chennai is also famous for its classical music and dance, hosting numerous festivals throughout the year
+                that celebrate its rich culture.
+                Explore its unique neighborhoods, savor local delicacies like dosa and filter coffee, and immerse
+                yourself in the warmth of its people.
+            </p>
+        </section>
+        <section id="destinations" class="destinations">
+            <h2>Must-Visit Places in Chennai</h2>
+            <div class="destination-grid">
+                <div class="destination-item">
+                    <img src="https://media.istockphoto.com/id/178632676/photo/st-george-temple.webp?a=1&b=1&s=612x612&w=0&k=20&c=G1mR-ft-9A9hRVu2MjMcBZqXooi6QQU7yf4HTXYoqS8="
+                        alt="Fort St. George" />
+                    <h3>Fort St. George</h3>
+                    <p>
+                        Built in 1644, this historic fort is the first English fortress in India. Explore the museum
+                        that showcases the city’s colonial past and admire the architecture that stands as a testament
+                        to Chennai's rich history.
+                    </p>
+                </div>
+                <div class="destination-item">
+                    <img src="https://media.istockphoto.com/id/500296908/photo/chennai-aerial-view-with-marina-beach.webp?a=1&b=1&s=612x612&w=0&k=20&c=cCO7n5Y5HCG2Sa3wB2cwglYCEyzrImEkVendXPeBtdQ="
+                        alt="Marina Beach" />
+                    <h3>Marina Beach</h3>
+                    <p>
+                        One of the longest urban beaches in the world, Marina Beach is perfect for evening strolls and
+                        enjoying local snacks. Witness breathtaking sunrises and sunsets while immersing yourself in the
+                        local culture and traditions.
+                    </p>
+                </div>
+                <div class="destination-item">
+                    <img src="https://media.istockphoto.com/id/641702546/photo/kapaleeswarar-temple-in-chennai-india.webp?a=1&b=1&s=612x612&w=0&k=20&c=6oZmleO6lyFdfO1kmm3I6ySey9GKVLyiDD7Mp5Oh8jU="
+                        alt="Kapaleeshwarar Temple" />
+                    <h3>Kapaleeshwarar Temple</h3>
+                    <p>
+                        A stunning example of Dravidian architecture, this ancient temple dedicated to Lord Shiva is
+                        adorned with intricate sculptures and vibrant carvings, making it a must-visit for its spiritual
+                        ambiance and artistic beauty.
+                    </p>
+                </div>
+                <div class="destination-item">
+                    <img src="https://media.istockphoto.com/id/1852838930/photo/government-palace-in-lima.webp?a=1&b=1&s=612x612&w=0&k=20&c=rM0UShTiFtEFWyLuWU9gR6ZMhNH2vRmkcBz5fEjbRKo="
+                        alt="Government Museum" />
+                    <h3>Government Museum</h3>
+                    <p>
+                        One of the oldest museums in India, it houses a rich collection of art, archaeology, and
+                        numismatics. The museum offers insights into the region's history and showcases artifacts that
+                        reflect the cultural heritage of Tamil Nadu.
+                    </p>
+                </div>
+                <div class="destination-item">
+                    <img src="https://media.istockphoto.com/id/1558654778/photo/crocodiles-in-the-farm.webp?a=1&b=1&s=612x612&w=0&k=20&c=5M4AlW05vLh5IYwi85uE6CkxC8jcpUjI81tP21aBt-Y="
+                        alt="Guindy National Park" />
+                    <h3>Guindy National Park</h3>
+                    <p>
+                        A unique urban national park, it is home to diverse flora and fauna. Enjoy nature trails, spot
+                        animals like deer and blackbuck, and appreciate the serene environment within the bustling city.
+                    </p>
+                </div>
+                <div class="destination-item">
+                    <img src="https://media.istockphoto.com/id/1298956757/photo/traditional-hindu-temple-kidangamparambu-sree-bhuvaneswari-in-india-in-allapuzha-kerala-tall.webp?a=1&b=1&s=612x612&w=0&k=20&c=M_YAFkPMcAkYhVzvp9AKu3ko-tTYzYB8zZK4w7X4i3M="
+                        alt="Sriperumbudur" />
+                    <h3>Sriperumbudur</h3>
+                    <p>
+                        The birthplace of Sri Ramanuja, this town features the beautiful Rajagopalaswamy temple and is
+                        an important pilgrimage site. Its tranquil environment and spiritual significance attract
+                        visitors seeking peace and devotion.
+                    </p>
+                </div>
+                
+                
+            </div>
+        </section>
+        <section id="contact" class="contact">
+            <h3>Contact Us</h3>
+            <p>If you have any questions or need assistance, feel free to reach out!</p>
+            <div class="contact-info">
+                <ul>
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>Rajhamundry, GGU University
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i><a href="mailto:info@travelworld.com">info@travelworld.com</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone-alt"></i><a href="tel:555-123-4567">555-123-4567</a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <footer>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p>&copy; 2024 Travel World. All Rights Reserved.</p>
+        </footer>
+    </main>
+</body>
+
+</html>
