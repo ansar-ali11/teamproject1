@@ -40,7 +40,7 @@ Each city has its own dedicated page showcasing the **best places to visit**. Th
 
 The website is live and can be accessed through the following URL (replace with your actual Firebase URL):
 
-**Website URL**: [https://your-firebase-project-id.web.app](https://your-firebase-project-id.web.app)
+**Website URL**: [https://your-firebase-project-id.web.app](https://travel-4aa2a.web.app/)
 
 
 
